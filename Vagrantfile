@@ -3,6 +3,9 @@ Vagrant.configure('2') do |config|
 
   config.vm.provider :virtualbox do |v, override|
     override.vm.box_version = '9000.88.0' # ci:replace
+    v.name = "Bosh-Lite"
+    v.memory = 10240
+    config.vm.synced_folder ".", "/vagrant", mount_options: ["dmode=777"]
     # To use a different IP address for the bosh-lite director, uncomment this line:
     # override.vm.network :private_network, ip: '192.168.59.4', id: :local
   end
